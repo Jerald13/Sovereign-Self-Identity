@@ -1,0 +1,30 @@
+:host {
+    display: block;
+    padding: 1rem; 
+}  
+/* Sidebar */
+.sidebar {
+    position: absolute;
+    top: 20px;
+    bottom: 0;
+    left: 0;
+    padding: 48px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgba(20, 196, 158, 0.836), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    width: 200px;
+    z-index: 600;
+    background-color:rgba(0, 0, 0, 0.5) ;
+    }
+    
+    @media (max-width: 991.98px) {
+    .sidebar {
+    width: 100%;
+    }
+    }
+    .sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(20, 196, 158, 0.836), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    } 
+ 
+    app-nav-card{
+    padding: 10px;
+    }   

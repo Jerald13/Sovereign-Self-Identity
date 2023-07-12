@@ -1,0 +1,167 @@
+<div class="container">
+    <form [formGroup]="proofForm" novalidate autocomplete="false" (ngSubmit)="onSubmit()">
+        <div class="card shadow-sm" style="width: 40rem;">
+            <div class="card-body" style="width: 25rem;">
+                <div class="card-title">
+                    <span>{{ 'proof.new-new-proof' | translate }}</span>
+                </div>
+                <div class="form-inline">
+                    <span>
+                        <small class="text-muted">{{ 'shared.connection-id' | translate }}:</small>&nbsp;
+                    </span>
+                    <span>
+                        <input type="text" class="form-control" placeholder="8794e8b4-ac9c-4043-9dd6-d3fd83fa6cb2"
+                            aria-label="Default" aria-describedby="inputGroup-sizing-default" style="width: 22rem;"
+                            formControlName="connectionID">&nbsp;
+                    </span>
+                </div>
+                <div class="form-inline">
+                    <span>
+                        <small class="text-muted">{{ 'shared.comment' | translate }}:</small>&nbsp;
+                    </span>
+                    <span>
+                        <input type="text" class="form-control" placeholder="{{ 'proof.new-comment-message' | translate}}" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default" style="width: 22rem;"
+                            formControlName="comment">&nbsp;
+                    </span>
+                </div>
+                <div class="form-inline">
+                    <span>
+                        <small class="text-muted">{{ 'proof.new-requeest-name' | translate }}:</small>&nbsp;
+                    </span>
+                    <span>
+                        <input type="text" class="form-control" placeholder="{{ 'proof.new-requeest-name' | translate }}" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default" style="width: 22rem;"
+                            formControlName="requestName">&nbsp;
+                    </span>
+                </div>
+                <div class="form-inline">
+                    <span>
+                        <small class="text-muted">{{ 'proof.new-credential-definition-id' | translate }}:</small>&nbsp;
+                    </span>
+                    <span>
+                        <input type="text" class="form-control" placeholder="{{ 'proof.new-credential-definition-id' | translate }}" aria-label="Default"
+                            aria-describedby="inputGroup-sizing-default" style="width: 22rem;"
+                            formControlName="credentialDefinitionId">&nbsp;
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <span>{{ 'proof.new-requested-attribute-names' | translate }}</span>
+                    </div>
+                    <div class="card-text">
+                        <div formArrayName="attributes">
+                            <div *ngFor="let attribute of attributes.controls; let i = index">
+                                <span>
+                                    <small class="text-muted">{{ 'proof.new-attribute-name' | translate }}{{ i + 1 }}:</small>&nbsp;
+                                </span>
+                                <span>
+                                    <div class="input-group mb-3">
+                                        <input id="attribute-{{i}}" type="text" class="form-control"
+                                            placeholder="eg.firstName" aria-label="Default"
+                                            aria-describedby="button-addon2" style="width: 21rem;"
+                                            [formControlName]="i" />
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-info" (click)="addAttribute()">{{ 'proof.new-add-another-attribute' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="card-body">
+                    <div class="card-title">
+                        <span>{{ 'proof.new-requested-predicates' | translate }}</span>
+                    </div>
+                    <div class="card-text">
+                        <div formArrayName="predicates">
+                            <div *ngFor="let predicate of predicates.controls; let i = index">
+                                <span>
+                                    <small class="text-muted">{{ 'proof.new-predicate' | translate }}{{ i + 1 }}:</small>&nbsp;
+                                </span>
+                                <span class="badge badge-warning">{{ 'proof.new-space' | translate }}
+                                    <div class="input-group mb-3">
+                                        <input id="predicate-{{i}}" type="text" class="form-control"
+                                            placeholder="DoB &lt;= 2000" aria-label="Default"
+                                            aria-describedby="button-addon2" style="width: 21rem;"
+                                            [formControlName]="i" />
+                                    </div>
+                                </span>
+                                
+                            </div>
+                            <div class="input-group-append">
+                                <button type="button" class="btn btn-info" (click)="addPredicate()">{{ 'proof.new-add-another-predicate' | translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block mb-3" style="width: 40rem;">{{ 'proof.new-new-proof' | translate }}</button>
+    </form>
+    <div *ngIf="proofRequest" class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>{{ 'proof.new-proof-request-generated' | translate }}:</label>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'shared.presentation-exchange-id' | translate }}:&nbsp;</small>
+                                <p>{{ proofRequest?.pres_ex_id }}</p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'shared.connection-id' | translate }}:&nbsp;</small>
+                                <p>{{ proofRequest?.connection_id }}</p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'shared.state' | translate }}:&nbsp;</small>
+                                <p>{{ proofRequest?.state }}</p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'shared.my-role' | translate }}:&nbsp;</small>
+                                <p>{{ proofRequest?.role }}</p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'shared.comment' | translate }}:&nbsp;</small>
+                                <p>{{ proofRequest?.pres_request?.comment }}</p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'proof.new-requested-attribute-names' | translate }}:&nbsp;</small>
+                                <p *ngFor="let key of attributeKeys; let i = index">
+                                    {{ attributeKeys[i] }}: {{ attributeValues[i]?.name }}
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'proof.new-requested-predicates' | translate }}:&nbsp;</small>
+                                <p *ngFor="let key of predicateKeys; let i = index">
+                                    {{ predicateKeys[i] }}: {{ predicateValues[i]?.name }} {{ predicateValues[i]?.p_type
+                                    }} {{ predicateValues[i]?.p_value }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-text">
+                            <div>
+                                <small class="text-muted">{{ 'proof.not-expired-until' | translate }}:&nbsp;</small>
+                                <p>{{ proofValidUntil }}</p>
+                            </div>
+                        </div>  -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

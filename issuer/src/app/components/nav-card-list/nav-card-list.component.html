@@ -1,0 +1,19 @@
+  <!-- Sidebar -->
+  <nav id="sidebarMenu" class="collapse d-flex justify-content-center flex-column mb-3
+   collapse bg-white">
+    <div class="position-sticky">
+      <div class="list-group list-group-flush shadow-none p-4 mb-4 m-5 bd-highlight "> 
+        <!-- Collapsed content -->
+        <ul id="collapseExample1" class="collapse show list-group list-group-flush">
+          
+          <div class="flex-container"> 
+          <app-nav-card *ngFor="let navLink of navLinks" [navLink]="navLink"></app-nav-card> 
+          </div>
+
+        </ul>
+        <!-- Collapse 1 -->
+ 
+      </div>
+    </div>
+  </nav>
+  <!-- Sidebar -->

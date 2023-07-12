@@ -1,0 +1,12 @@
+<nav class="navbar sticky-top navbar-dark bg-dark">
+    <i class="fa fa-user-circle fa-3x" aria-hidden="true" style="color:white"><span style="padding: 10px; font-size: larger;" class="navbar-brand mb-0 h2">{{ 'header.holder' | translate }}</span> </i>
+    
+    <ng-container [ngSwitch]="status">
+        <div *ngSwitchCase="agentStatus.Up" class="status-light bg-success" role="status"></div>
+        <div *ngSwitchCase="agentStatus.Down" class="status-light bg-danger" role="status"></div>
+        <div *ngSwitchCase="agentStatus.Loading" class="spinner-grow text-light" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div *ngSwitchDefault></div>
+    </ng-container>
+</nav>

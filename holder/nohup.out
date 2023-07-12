@@ -1,0 +1,159 @@
+Error: This command is not available when running the Angular CLI outside a workspace.
+****************************************************************************************
+This is a simple server for use in testing or debugging Angular applications locally.
+It hasn't been reviewed for security issues.
+
+DON'T USE IT FOR PRODUCTION!
+****************************************************************************************
+- Generating browser application bundles (phase: setup)...
+√ Browser application bundle generation complete.
+
+Initial Chunk Files   | Names         |      Size
+main.js               | main          | 675.27 kB
+styles.css, styles.js | styles        | 367.39 kB
+polyfills.js          | polyfills     | 187.52 kB
+runtime.js            | runtime       |   3.10 kB
+
+| Initial Total |   1.20 MB
+
+Lazy Chunk Files      | Names         |      Size
+96.js                 | -             |  40.44 kB
+648.js                | -             |  39.91 kB
+316.js                | -             |  27.12 kB
+986.js                | -             |  26.22 kB
+885.js                | -             |  16.98 kB
+430.js                | -             |  15.75 kB
+common.js             | common        |   4.40 kB
+
+Build at: 2022-10-04T15:23:34.955Z - Hash: 84c6610df10ad16b1239 - Time: 16087ms
+
+Warning: C:/Users/USER/HyperledgerAries/ACAPy-Controller-Angular/holder/src/environments/environment.prod.ts is part of the TypeScript compilation but it's unused.
+Add only entry points to the 'files' or 'include' properties in your tsconfig.
+
+Warning: C:\Users\USER\HyperledgerAries\ACAPy-Controller-Angular\holder\src\main.ts depends on 'bootstrap'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+** Angular Live Development Server is listening on localhost:4001, open your browser on http://localhost:4001/ **
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+Initial Chunk Files | Names |      Size
+main.js             | main  | 675.27 kB
+
+10 unchanged chunks
+
+Build at: 2022-10-04T16:01:21.697Z - Hash: a6275ff8a0a5244de4f0 - Time: 5878ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+11 unchanged chunks
+
+Build at: 2022-10-04T16:01:39.989Z - Hash: a6275ff8a0a5244de4f0 - Time: 295ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+Initial Chunk Files | Names |      Size
+main.js             | main  | 675.27 kB
+
+10 unchanged chunks
+
+Build at: 2022-10-04T16:02:49.731Z - Hash: 01c82842386b988e8bf5 - Time: 4399ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+Initial Chunk Files | Names |      Size
+main.js             | main  | 675.29 kB
+
+10 unchanged chunks
+
+Build at: 2022-10-04T16:03:21.583Z - Hash: 34c31af8ee2e6c48851d - Time: 4353ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+Initial Chunk Files | Names |      Size
+main.js             | main  | 675.29 kB
+
+10 unchanged chunks
+
+Build at: 2022-10-04T16:04:33.389Z - Hash: f6462a4219d5b9c48de5 - Time: 4465ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+11 unchanged chunks
+
+Build at: 2022-10-04T16:04:34.989Z - Hash: f6462a4219d5b9c48de5 - Time: 298ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.
+√ Browser application bundle generation complete.
+
+Initial Chunk Files | Names |      Size
+main.js             | main  | 675.29 kB
+
+10 unchanged chunks
+
+Build at: 2022-10-05T04:27:36.067Z - Hash: 7a8afc0157dc737f9568 - Time: 5702ms
+
+Warning: 3 rules skipped due to selector errors:
+  .custom-file-input:lang(en) ~ .custom-file-label -> unmatched pseudo-class :lang
+  0% -> Unmatched selector: %
+  50% -> Unmatched selector: %
+
+
+
+√ Compiled successfully.

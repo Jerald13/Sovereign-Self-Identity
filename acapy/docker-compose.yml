@@ -1,0 +1,100 @@
+version: "3"
+services:
+  issuerConn:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+    container_name: sainoforce
+    environment:
+      ACAPY_ADMIN_INSECURE_MODE: "true"
+      ACAPY_AUTO_PROVISION: "true"
+      ACAPY_DEBUG_CONNECTIONS: "true"
+      ACAPY_ENDPOINT: "http://sainoforce:6010"
+      ACAPY_LABEL: "SainoForce"
+      ACAPY_LOG_LEVEL: "info"
+      ADMIN_PORT: "6011"
+      AGENT_PORT: "6010"
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "aca-py start \
+        --admin '0.0.0.0' 6011 \
+        --inbound-transport http '0.0.0.0' 6010 \
+        --outbound-transport http \
+        --seed sainoforce0000000000000000000000  \
+        --wallet-type indy \
+        --wallet-name issuerwallet \
+        --wallet-key issuerkey \
+        --auto-provision \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --genesis-url 'http://host.docker.internal:9000/genesis' \
+        --auto-ping-connection
+        --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
+      ]
+    ports:
+      - "6011:6011"
+
+  holderConn:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+    container_name: sainopal
+    environment:
+      ACAPY_ADMIN_INSECURE_MODE: "true"
+      ACAPY_AUTO_PROVISION: "true"
+      ACAPY_DEBUG_CONNECTIONS: "true"
+      ACAPY_ENDPOINT: "http://sainopal:7010"
+      ACAPY_LABEL: "SainoPal"
+      ACAPY_LOG_LEVEL: "info"
+      ADMIN_PORT: "7011"
+      AGENT_PORT: "7010"
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "aca-py start \
+        --admin '0.0.0.0' 7011 \
+        --inbound-transport http '0.0.0.0' 7010 \
+        --outbound-transport http \
+        --wallet-type indy \
+        --wallet-local-did \
+        --wallet-name holderwallet \
+        --wallet-key holderkey \
+        --auto-provision \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --genesis-url 'http://host.docker.internal:9000/genesis' \
+        --auto-ping-connection ",
+      ]
+    ports:
+      - "7011:7011"
+
+  tarucConn:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+    container_name: taruc
+    environment:
+      ACAPY_ADMIN_INSECURE_MODE: "true"
+      ACAPY_AUTO_PROVISION: "true"
+      ACAPY_DEBUG_CONNECTIONS: "true"
+      ACAPY_ENDPOINT: "http://taruc:8010"
+      ACAPY_LABEL: "TARUC"
+      ACAPY_LOG_LEVEL: "info"
+      ADMIN_PORT: "8011"
+      AGENT_PORT: "8010"
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "aca-py start \
+        --admin '0.0.0.0' 8011 \
+        --inbound-transport http '0.0.0.0' 8010 \
+        --outbound-transport http \
+        --wallet-type indy \
+        --seed issuer00000000000000000000000002  \
+        --wallet-name issuerswallet \
+        --wallet-key issuerskey \
+        --auto-provision \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --auto-respond-credential-proposal \
+        --genesis-url 'http://host.docker.internal:9000/genesis' \
+        --auto-ping-connection
+        --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
+      ]
+    ports:
+      - "8011:8011"
