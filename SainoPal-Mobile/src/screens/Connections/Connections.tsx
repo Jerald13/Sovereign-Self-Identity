@@ -47,7 +47,7 @@ export default function Connections() {
     }
 
     fetchConnections();
-  }, [agent]);
+  }, [agent, connectionList]);
 
   return (
     <>
@@ -57,10 +57,7 @@ export default function Connections() {
           <View
             style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <Button 
-              title="active" 
-              onPress={() => setConnectState("active")} 
-            />
+            <Button title="active" onPress={() => setConnectState("active")} />
             <Button
               title="pending"
               onPress={() => setConnectState("invitation")}

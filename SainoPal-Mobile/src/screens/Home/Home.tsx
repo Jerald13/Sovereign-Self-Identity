@@ -1,5 +1,8 @@
 import { StyleSheet, Text, View, Button, Alert, TextInput } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import AgentService from "../../services/AgentService";
+import {Buffer} from 'buffer';
+import axios from "axios";
 
 interface AlertBox {
   msg: string;
@@ -7,9 +10,32 @@ interface AlertBox {
 
 export default function Home() {
   const [text, setText] = useState<string>("");
+  const [agent, setAgent] = useState<AgentService | null>(null);
 
-  function alertMessage(props: AlertBox) {
-    Alert.alert(props.msg);
+  useEffect(() => {
+    if (!agent) {
+      const initAgent: AgentService = new AgentService(axios);
+      setAgent(initAgent);
+    }
+  }, [agent]);
+
+  function handleConnection(invitationUrl: string) {
+    const url = new URL(invitationUrl);
+    const invitationParam = url.searchParams.get("c_i");
+
+    if (!invitationParam) {
+      console.error("Invalid Invitation Url");
+      return;
+    }
+    const decoded = Buffer.from(invitationParam,'base64').toString();
+    console.log(decoded)
+    const payload = JSON.parse(decoded)
+    console.log('Payload : ', payload)
+    
+    agent?.receiveInvitation(payload)
+    .then(e => console.log(e))
+    .catch(e => console.error(e))
+    
   }
 
   return (
@@ -22,12 +48,14 @@ export default function Home() {
         <Text>Type Something Below To Test Something</Text>
         <TextInput
           style={styles.textInputStyle}
+          multiline={true}
+          textAlignVertical="top"
           onChangeText={setText}
           placeholder="Input Text Here"
         />
         <Button
           title="Click me to Alert"
-          onPress={() => alertMessage({ msg: text })}
+          onPress={() => handleConnection(text)}
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
