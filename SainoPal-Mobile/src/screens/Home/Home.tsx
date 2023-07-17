@@ -1,41 +1,41 @@
-import { StyleSheet, Text, View, Button, Alert, TextInput } from "react-native";
-import { useState, useEffect } from "react";
-import AgentService from "../../services/AgentService";
-import {Buffer} from 'buffer';
-import axios from "axios";
-
+import { StyleSheet, Text, View, Button, Alert, TextInput } from "react-native"
+import { useState, useEffect } from "react"
+import AgentService from "../../services/AgentService"
+import { Buffer } from "buffer"
+import axios from "axios"
+import "react-native-url-polyfill/auto"
 interface AlertBox {
-  msg: string;
+  msg: string
 }
 
 export default function Home() {
-  const [text, setText] = useState<string>("");
-  const [agent, setAgent] = useState<AgentService | null>(null);
+  const [text, setText] = useState<string>("")
+  const [agent, setAgent] = useState<AgentService | null>(null)
 
   useEffect(() => {
     if (!agent) {
-      const initAgent: AgentService = new AgentService(axios);
-      setAgent(initAgent);
+      const initAgent: AgentService = new AgentService(axios)
+      setAgent(initAgent)
     }
-  }, [agent]);
+  }, [agent])
 
   function handleConnection(invitationUrl: string) {
-    const url = new URL(invitationUrl);
-    const invitationParam = url.searchParams.get("c_i");
+    const url = new URL(invitationUrl)
+    const invitationParam = url.searchParams.get("c_i")
 
     if (!invitationParam) {
-      console.error("Invalid Invitation Url");
-      return;
+      console.error("Invalid Invitation Url")
+      return
     }
-    const decoded = Buffer.from(invitationParam,'base64').toString();
+    const decoded = Buffer.from(invitationParam, "base64").toString()
     console.log(decoded)
     const payload = JSON.parse(decoded)
-    console.log('Payload : ', payload)
-    
-    agent?.receiveInvitation(payload)
-    .then(e => console.log(e))
-    .catch(e => console.error(e))
-    
+    console.log("Payload : ", payload)
+
+    agent
+      ?.receiveInvitation(payload)
+      .then((e) => console.log(e))
+      .catch((e) => console.error(e))
   }
 
   return (
@@ -61,7 +61,7 @@ export default function Home() {
         />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -81,4 +81,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     alignItems: "center",
   },
-});
+})
