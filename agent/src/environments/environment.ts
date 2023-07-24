@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  ip: "localhost",
-  issuerPort: "6011",
+  ip: "10.123.10.106",
+  issuerPort: "4000",
   holderPort: "7011",
-  verifierPort: "8011"
-};
+  verifierPort: "6001",
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

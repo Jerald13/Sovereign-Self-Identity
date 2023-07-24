@@ -25,10 +25,18 @@
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" (click)="copy(invitationUrlEl)">
                             <i class="fas fa-clipboard"></i>
-                        </button>
+                        </button>`
                     </div>
                 </div>
+
+                <!-- <div class="d-flex justify-content-center">
+                    <ngx-qrcode2 [qrc-value]="invitationUrl"></ngx-qrcode2>
+                </div> -->
+
+
+                <ngx-qrcode class="qr" [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="invitationUrl"
+                    cssClass="bshadow"></ngx-qrcode>
+
             </div>
         </div>
     </div>
-</div>

@@ -4,6 +4,9 @@ import AgentService from "../../services/AgentService"
 import { Buffer } from "buffer"
 import axios from "axios"
 import "react-native-url-polyfill/auto"
+import { useNavigation } from "@react-navigation/native"
+
+
 interface AlertBox {
   msg: string
 }
@@ -11,13 +14,15 @@ interface AlertBox {
 export default function Home() {
   const [text, setText] = useState<string>("")
   const [agent, setAgent] = useState<AgentService | null>(null)
-
+  const navigation = useNavigation()
   useEffect(() => {
     if (!agent) {
       const initAgent: AgentService = new AgentService(axios)
       setAgent(initAgent)
     }
   }, [agent])
+
+
 
   function handleConnection(invitationUrl: string) {
     const url = new URL(invitationUrl)

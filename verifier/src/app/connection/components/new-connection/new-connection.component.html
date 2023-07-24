@@ -1,0 +1,42 @@
+<div class="container">
+    <form novalidate autocomplete="false">
+        <button type="button" class="btn btn-primary btn-lg btn-block mb-3" (click)="onSubmit()"
+            [disabled]="invitation">{{ 'connection.new-invitation' | translate }}</button>
+    </form>
+
+    <div *ngIf="invitation" class="row">
+        <div class="col-12">
+            <div class="form-group">
+                <label>{{ 'connection.new-copy-invitation-object' | translate }}:</label>
+                <div class="input-group">
+                    <textarea class="form-control" cols="30" rows="10" [value]="invitationObject" #invitationObjectEl
+                        readonly></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="copy(invitationObjectEl)">
+                            <i class="fas fa-clipboard"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>{{ 'connection.new-copy-invitation-url' | translate }}:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" [value]="invitationUrl" #invitationUrlEl readonly>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="copy(invitationUrlEl)">
+                            <i class="fas fa-clipboard"></i>
+                        </button>`
+                    </div>
+                </div>
+
+                <!-- <div class="d-flex justify-content-center">
+                    <ngx-qrcode2 [qrc-value]="invitationUrl"></ngx-qrcode2>
+                </div> -->
+
+
+                <ngx-qrcode class="qr" [elementType]="elementType" [errorCorrectionLevel]="correctionLevel" [value]="invitationUrl"
+                    cssClass="bshadow"></ngx-qrcode>
+
+            </div>
+        </div>
+    </div>

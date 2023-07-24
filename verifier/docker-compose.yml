@@ -1,0 +1,69 @@
+version: "3"
+services:
+  #   tarucConn:
+  #     image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+  #     container_name: taruc
+  #     environment:
+  #       ACAPY_ADMIN_INSECURE_MODE: "true"
+  #       ACAPY_AUTO_PROVISION: "true"
+  #       ACAPY_DEBUG_CONNECTIONS: "true"
+  #       ACAPY_ENDPOINT: "http://taruc:8010"
+  #       ACAPY_LABEL: "TARUC"
+  #       ACAPY_LOG_LEVEL: "info"
+  #       ADMIN_PORT: "6001"
+  #       AGENT_PORT: "8010"
+  #     entrypoint: /bin/bash
+  #     command: [
+  #         "-c",
+  #         "aca-py start \
+  #         --admin '0.0.0.0' 6001 \
+  #         --inbound-transport http '0.0.0.0' 8010 \
+  #         --outbound-transport http \
+  #         --wallet-type indy \
+  #         --seed issuer00000000000000000000000002  \
+  #         --wallet-name issuerswallet \
+  #         --wallet-key issuerskey \
+  #         --auto-provision \
+  #         --auto-accept-invites \
+  #         --auto-accept-requests \
+  #         --auto-respond-credential-proposal \
+  #         --genesis-url 'http://103.52.192.245:7000/genesis' \
+  #         --auto-ping-connection \
+  #         --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
+  #       ]
+  #     ports:
+  #       - "6001:6001"
+
+  tarucConn:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+    container_name: taruc
+    environment:
+      ACAPY_ADMIN_INSECURE_MODE: "true"
+      ACAPY_AUTO_PROVISION: "true"
+      ACAPY_DEBUG_CONNECTIONS: "true"
+      ACAPY_ENDPOINT: "http://taruc:8010"
+      ACAPY_LABEL: "TARUC"
+      ACAPY_LOG_LEVEL: "info"
+      ADMIN_PORT: "6001"
+      AGENT_PORT: "8010"
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "aca-py start \
+        --admin '0.0.0.0' 6001 \
+        --inbound-transport http '0.0.0.0' 8010 \
+        --outbound-transport http \
+        --wallet-type indy \
+        --seed issuer00000000000000000000000002  \
+        --wallet-name issuerswallet \
+        --wallet-key issuerskey \
+        --auto-provision \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --auto-respond-credential-proposal \
+        --genesis-url 'http://103.52.192.245:7000/genesis' \
+        --auto-ping-connection \
+        --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
+      ]
+    ports:
+      - "6001:6001"

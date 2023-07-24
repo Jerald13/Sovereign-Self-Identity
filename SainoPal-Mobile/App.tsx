@@ -1,14 +1,16 @@
-import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet } from "react-native";
-import Home from "./src/screens/Home/Home";
-import MyTabBar from "./MyTabBar";
-import Profile from "./Profile";
-import Connect from "./src/screens/Connect/Connect";
-import Connections from "./src/screens/Connections/Connections";
+import type { BottomTabBarProps } from "@react-navigation/bottom-tabs"
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { NavigationContainer } from "@react-navigation/native"
+import { StyleSheet } from "react-native"
+import Home from "./src/screens/Home/Home"
+import Scan from "./src/screens/Scan/Scan"
 
-const Tab = createBottomTabNavigator();
+import MyTabBar from "./MyTabBar"
+import Profile from "./Profile"
+import Connect from "./src/screens/Connect/Connect"
+import Connections from "./src/screens/Connections/Connections"
+
+const Tab = createBottomTabNavigator()
 
 export default function App() {
   return (
@@ -23,7 +25,7 @@ export default function App() {
         <Tab.Screen
           name="Home"
           component={Home}
-          key={"home"}
+          key={"Home"}
           navigationKey="1"
         />
         <Tab.Screen
@@ -33,9 +35,9 @@ export default function App() {
           navigationKey="2"
         />
         <Tab.Screen
-          name="Profile"
-          component={Profile}
-          key={"profile"}
+          name="Scan"
+          component={Scan}
+          key={"Scan"}
           navigationKey="3"
         />
         <Tab.Screen
@@ -46,7 +48,7 @@ export default function App() {
         />
       </Tab.Navigator>
     </NavigationContainer>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -62,4 +64,4 @@ const styles = StyleSheet.create({
   content: {
     marginTop: 20,
   },
-});
+})

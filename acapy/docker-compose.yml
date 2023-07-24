@@ -10,13 +10,13 @@ services:
       ACAPY_ENDPOINT: "http://sainoforce:6010"
       ACAPY_LABEL: "SainoForce"
       ACAPY_LOG_LEVEL: "info"
-      ADMIN_PORT: "6011"
+      ADMIN_PORT: "4000"
       AGENT_PORT: "6010"
     entrypoint: /bin/bash
     command: [
         "-c",
         "aca-py start \
-        --admin '0.0.0.0' 6011 \
+        --admin '0.0.0.0' 4000 \
         --inbound-transport http '0.0.0.0' 6010 \
         --outbound-transport http \
         --seed sainoforce0000000000000000000000  \
@@ -26,12 +26,12 @@ services:
         --auto-provision \
         --auto-accept-invites \
         --auto-accept-requests \
-        --genesis-url 'http://host.docker.internal:9000/genesis' \
-        --auto-ping-connection
+        --genesis-url 'http://103.52.192.245:7000/genesis' \
+        --auto-ping-connection \
         --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
       ]
     ports:
-      - "6011:6011"
+      - "4000:4000"
 
   holderConn:
     image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0

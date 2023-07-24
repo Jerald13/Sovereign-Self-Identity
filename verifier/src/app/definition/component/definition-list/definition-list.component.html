@@ -1,0 +1,52 @@
+<div class="card-columns">
+    <div class="container">
+        <div class="card shadow-sm">
+            <div class="card-body" style="width: 25rem;">
+                <div class="card-title">
+                    <small>
+                        <span>{{ 'shared.search-definition-did' | translate }}</span>
+                    </small>
+                </div>
+                <div class="btn-group">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="issuerPublicDID">
+                        <option value="{{issuerPublicDID}}">{{issuerPublicDID}}</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="onSearch()"
+                            class="btn btn-primary">{{ 'shared.search' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search definition with did -->
+                <div class="card shadow-sm">
+                    <div class="card-body" style="width: 25rem;">
+                        <div class="card-title">
+                            <small>
+                                <span>{{ 'shared.enter-definition-did' | translate }}</span>    <!--Search with Created Definition ID -->
+                            </small>
+                        </div>
+                        <div class="btn-group">
+                            <input type='text' [(ngModel)]='enteredDefinitionID' /> 
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" (click)="onIDSearch()"
+                                        class="btn btn-primary">Search ID</button>
+                                </div>
+                        </div>
+                    </div> 
+                </div>        
+    </div>
+</div>
+<div class="card-columns">
+    <div class="container">
+        <h3><span class="badge badge-success">{{ 'shared.search-result' | translate }}</span></h3>
+    </div>
+</div>
+<div class="card-columns">
+    <div class="container">
+        <app-definition-card *ngFor="let definitionID of definitionIDs" [definitionID]="definitionID"></app-definition-card>
+        
+    </div>
+</div>
+<app-empty-list *ngIf="!definitionIDs?.length"></app-empty-list>

@@ -1,0 +1,34 @@
+version: "3"
+services:
+  issuerConn:
+    image: bcgovimages/aries-cloudagent:py36-1.16-1_0.7.3-rc0
+    container_name: sainoforce
+    environment:
+      ACAPY_ADMIN_INSECURE_MODE: "true"
+      ACAPY_AUTO_PROVISION: "true"
+      ACAPY_DEBUG_CONNECTIONS: "true"
+      ACAPY_ENDPOINT: "http://sainoforce:6010"
+      ACAPY_LABEL: "SainoForce"
+      ACAPY_LOG_LEVEL: "info"
+      ADMIN_PORT: "4000"
+      AGENT_PORT: "6010"
+    entrypoint: /bin/bash
+    command: [
+        "-c",
+        "aca-py start \
+        --admin '0.0.0.0' 4000 \
+        --inbound-transport http '0.0.0.0' 6010 \
+        --outbound-transport http \
+        --seed sainoforce0000000000000000000000  \
+        --wallet-type indy \
+        --wallet-name issuerwallet \
+        --wallet-key issuerkey \
+        --auto-provision \
+        --auto-accept-invites \
+        --auto-accept-requests \
+        --genesis-url 'http://10.123.10.108:7000/genesis' \
+        --auto-ping-connection \
+        --tails-server-base-url 'https://e8bb-210-195-159-76.ngrok.io/' ",
+      ]
+    ports:
+      - "4000:4000"
