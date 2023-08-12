@@ -32,7 +32,7 @@ export default function Connect() {
         title="Click me"
         onPress={handlePress}
       />
-      <Text>{text}</Text>
+      <Text>{text}</Text> 
     </View>
   );
 }

@@ -22,7 +22,7 @@ class AgentService {
 
   getConnections(): Promise<any> {
     return this.http
-      .get("http://192.168.1.17:7011/connections", {})
+      .get("http://10.123.10.107:6001/connections", {})
       .then((e) => {
         console.log(e.status)
         return e.data
@@ -32,7 +32,7 @@ class AgentService {
 
   receiveInvitation(payload: any): Promise<any> {
     return this.http
-      .post("http://192.168.1.17:7011/connections/receive-invitation", payload)
+      .post("http://10.123.10.107:6001/connections/receive-invitation", payload)
       .then((e) => {
         console.log(e.data)
         return e.data
